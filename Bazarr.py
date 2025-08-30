@@ -12,7 +12,8 @@ load_dotenv()
 
 # Функция загрузки конфигурации
 def load_config():
-    with open("config.json", "r", encoding="utf-8") as f:
+    config_path = os.path.join(os.path.dirname(__file__), "config.json")
+    with open(config_path, "r", encoding="utf-8") as f:
         return json.load(f)
 
 config = load_config()
@@ -29,13 +30,16 @@ def main_menu_kb():
     return InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="📦 Каталог", callback_data="catalog")],
         [InlineKeyboardButton(text="☎ Контакты", callback_data="contacts")],
+        [InlineKeyboardButton(text="💬 Наш чат", url=config["chat_url"])],
+        [InlineKeyboardButton(text="📝 Оставить отзыв", url=config["review_url"])],
         [InlineKeyboardButton(text="📍 Как добраться", url=config["map_url"])]
     ])
+
 
 # /start
 @dp.message(Command("start"))
 async def send_welcome(message: types.Message):
-    file_path = config.get("welcome_image")
+    file_path = os.path.join(os.path.dirname(__file__), config.get("welcome_image"))
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="📋 Главное меню", callback_data="main_menu")]
     ])
@@ -58,7 +62,9 @@ async def show_catalog(callback: types.CallbackQuery):
     kb = InlineKeyboardMarkup(inline_keyboard=[
         [InlineKeyboardButton(text="⬅ Назад", callback_data="main_menu")]
     ])
-    await callback.message.answer(config["catalog_text"], reply_markup=kb)
+    await callback.message.answer("🛠 Каталог в разработке. Скоро добавим товары!", reply_markup=kb)
+
+
 
 # Контакты
 @dp.callback_query(F.data == "contacts")

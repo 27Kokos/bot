@@ -1,11 +1,13 @@
 {
   "welcome_text": "Добро пожаловать в бота BazaRR! 🛒",
-  "welcome_image": "welcome.png",
+  "welcome_image": "images/welcome.png",
   "contacts": {
-    "address": "г. Москва, ул. Примерная, 12",
-    "phone": "+7 (999) 123-45-67",
-    "hours": "09:00–222:00"
+    "address": "Образцовая ул., 5, корп. 2",
+    "phone": "+7 (906) 226-03-33",
+    "hours": "09:00–21:00"
   },
-  "map_url": "https://yandex.ru/maps/?pt=37.618423,55.751244&z=16&l=map",
-  "catalog_text": "Тут будет каталог товаров 📦"
+  "review_url": "https://yandex.ru/maps/org/bazarr/101125564764/reviews/",
+  "map_url": "https://yandex.ru/maps/-/CLA-bJ-0 ",
+  "catalog_text": "Тут будет каталог товаров 📦",
+  "chat_url": "https://t.me/BazaRR3"
 }
